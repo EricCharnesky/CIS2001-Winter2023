@@ -7,7 +7,7 @@ def count_down(n):
         print(n)
         count_down(n-1)
 
-count_down(10)
+#count_down(10)
 
 maze = [
     ['S', 'X', ' ', ' ', ' '],
@@ -18,4 +18,4 @@ maze = [
 ]
 
 solver = MazeSolver(maze)
-solver.solve()
+print(solver.solve())
