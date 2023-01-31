@@ -16,16 +16,21 @@ times = []
 # - worst case is O(N) - copy from old to new array
 # - best case - we don't care, but it's O(1)
 
+def compute_time_to_add(list_to_add_to, item):
+    start = time.perf_counter()
+    list_to_add_to.append(item)
+    end = time.perf_counter()
+    return end-start
 
 
-for number in range(1, 10000):
-    start_time = time.time_ns()
-    some_list.append(number)
-    end_time = time.time_ns()
-    times.append(end_time - start_time)
-    print(f'size of the list with {number} items {sys.getsizeof(some_list)}')
+timings = []
+some_list = []
+values = range(10_000_000)
+for n in values:
+    timings.append(compute_time_to_add(some_list, n))
 
-print(times)
+plt.plot(values, timings)
+plt.show()
 
 # copy process - O(n) - linear time
 new_list = [None] * (len(some_list) * 2)
